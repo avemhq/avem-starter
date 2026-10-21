@@ -1,0 +1,14 @@
+{
+  "name": "avem",
+  "description": "Claude Code plugins from Avem Investment GmbH",
+  "owner": {
+    "name": "Avem Investment GmbH"
+  },
+  "plugins": [
+    {
+      "name": "avem-starter",
+      "source": "./plugins/avem-starter",
+      "description": "Guards that prove they work: secret, git and send guards that fail closed, a selftest with calibration, a reviewer without a shell."
+    }
+  ]
+}

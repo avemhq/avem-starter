@@ -1,0 +1,9 @@
+invoice_id,customer,email,amount_chf,due_date,paid,complaint_open,payment_plan
+2026-0412,Bäckerei Musterhof GmbH,buchhaltung@musterhof.example,1850.00,2026-10-02,no,no,no
+2026-0398,Atelier Beispiel,info@atelier-beispiel.example,640.00,2026-09-24,no,no,no
+2026-0377,Treuhand Muster AG,kontakt@treuhand-muster.example,2300.00,2026-09-10,no,no,no
+2026-0405,Velo Beispielweg GmbH,kontakt@velo-beispielweg.example,980.00,2026-09-29,no,yes,no
+2026-0389,Praxis Musterplatz,praxis@musterplatz.example,415.50,2026-09-15,no,no,yes
+2026-0420,Druckerei Muster AG,fibu@druckerei-muster.example,38.00,2026-09-01,no,no,no
+2026-0416,Café Beispiel,hallo@cafe-beispiel.example,275.00,2026-10-12,no,no,no
+2026-0401,Hotel Musterblick,office@musterblick.example,4120.00,2026-09-30,yes,no,no

@@ -1,0 +1,11 @@
+{
+  "name": "avem-starter",
+  "version": "1.0.0",
+  "description": "Guards that prove they work: secret, git and send guards that fail closed, a selftest with calibration, a reviewer without a shell.",
+  "author": {
+    "name": "Avem Investment GmbH"
+  },
+  "homepage": "https://github.com/avemhq/avem-starter",
+  "repository": "https://github.com/avemhq/avem-starter",
+  "license": "MIT"
+}

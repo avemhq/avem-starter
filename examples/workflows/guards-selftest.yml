@@ -1,0 +1,30 @@
+# Copy to .github/workflows/ in your repository. Needs only .claude/.
+name: guards-selftest
+
+on:
+  push:
+  pull_request:
+  schedule:
+    # Once a month, so a change on the runner side shows up even without a push.
+    - cron: "17 6 3 * *"
+
+permissions:
+  contents: read
+
+jobs:
+  guards:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Guards block what they should and pass what they should
+        run: bash .claude/hooks/selftest.sh
+      - name: The selftest can go red (calibration)
+        run: bash .claude/hooks/selftest.sh --calibrate
+      - name: Same under the bash 3.2 that ships with macOS
+        if: runner.os == 'macOS'
+        run: SELFTEST_SHELL=/bin/bash /bin/bash .claude/hooks/selftest.sh

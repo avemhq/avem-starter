@@ -1,0 +1,57 @@
+name: selftest
+
+on:
+  push:
+  pull_request:
+  schedule:
+    # Once a month, so a change on the runner side shows up even without a push.
+    - cron: "17 6 3 * *"
+
+permissions:
+  contents: read
+
+jobs:
+  guards:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Guards block what they should and pass what they should
+        run: bash .claude/hooks/selftest.sh
+      - name: The selftest can go red (calibration)
+        run: bash .claude/hooks/selftest.sh --calibrate
+      - name: Same under the bash 3.2 that ships with macOS
+        if: runner.os == 'macOS'
+        run: SELFTEST_SHELL=/bin/bash /bin/bash .claude/hooks/selftest.sh
+      - name: shellcheck
+        if: runner.os == 'Linux'
+        run: shellcheck -x .claude/hooks/*.sh scripts/*.sh
+      - name: Plugin is current (rebuild, compare with plugins/avem-starter)
+        run: |
+          out="$(mktemp -d)/plugin"
+          bash scripts/build-plugin.sh "$out" avem-starter 1.0.0
+          diff -r "$out" plugins/avem-starter
+      - name: Plugin layout passes the selftest
+        run: |
+          bash plugins/avem-starter/scripts/selftest.sh
+          bash plugins/avem-starter/scripts/selftest.sh --calibrate
+      - name: Managed settings example is valid JSON
+        run: jq empty examples/managed-settings.json
+      - name: Example project tests (overdue invoices)
+        working-directory: examples/overdue-invoices/project
+        run: python3 -m unittest -v
+      # Last, because it removes jq from the runner: the guards and the
+      # selftest must also work with python3 alone.
+      - name: Same without jq (python3 branch), both layouts
+        if: runner.os == 'Linux'
+        run: |
+          sudo apt-get remove -y jq >/dev/null
+          if command -v jq >/dev/null 2>&1; then echo "jq still on PATH" >&2; exit 1; fi
+          bash .claude/hooks/selftest.sh
+          bash .claude/hooks/selftest.sh --calibrate
+          bash plugins/avem-starter/scripts/selftest.sh
+          bash plugins/avem-starter/scripts/selftest.sh --calibrate

@@ -1,0 +1,67 @@
+{
+  "permissions": {
+    "deny": [
+      "Read(./.env)",
+      "Read(./.env.*)",
+      "Read(!.env.example)",
+      "Read(./secrets/**)",
+      "Read(**/*.pem)",
+      "Read(**/*.key)",
+      "Read(~/.ssh/id_*)",
+      "Read(~/.aws/**)",
+      "Bash(git push --force *)",
+      "Bash(git reset --hard *)",
+      "mcp__*__*delete*"
+    ],
+    "disableBypassPermissionsMode": "disable"
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Library/Application Support/ClaudeCode/guards/protect-secrets.sh",
+            "args": [],
+            "onFailure": "block"
+          },
+          {
+            "type": "command",
+            "command": "/Library/Application Support/ClaudeCode/guards/guard-git.sh",
+            "args": [],
+            "onFailure": "block"
+          },
+          {
+            "type": "command",
+            "command": "/Library/Application Support/ClaudeCode/guards/block-external-send.sh",
+            "args": [],
+            "onFailure": "block"
+          }
+        ]
+      },
+      {
+        "matcher": "Read|Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Library/Application Support/ClaudeCode/guards/protect-secrets.sh",
+            "args": [],
+            "onFailure": "block"
+          }
+        ]
+      }
+    ]
+  },
+  "sandbox": {
+    "enabled": true,
+    "failIfUnavailable": true,
+    "allowUnsandboxedCommands": false,
+    "credentials": {
+      "envVars": [
+        { "name": "GITHUB_TOKEN", "mode": "deny" },
+        { "name": "NPM_TOKEN", "mode": "deny" }
+      ]
+    }
+  }
+}

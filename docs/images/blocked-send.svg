@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="250" viewBox="0 0 900 250" role="img" aria-label="The agent asks to run npm publish, the block-external-send guard stops it and explains why">
+  <rect width="900" height="250" rx="10" fill="#1e2127"/>
+  <circle cx="22" cy="20" r="6" fill="#ff5f56"/>
+  <circle cx="42" cy="20" r="6" fill="#ffbd2e"/>
+  <circle cx="62" cy="20" r="6" fill="#27c93f"/>
+  <text x="450" y="24" fill="#8b929e" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="middle">Claude Code wants to run a Bash command</text>
+  <g font-family="Menlo, Consolas, monospace" font-size="15">
+    <text x="24" y="66" fill="#8b929e">$ npm publish</text>
+    <text x="24" y="104" fill="#ff6b6b">Blocked by block-external-send:</text>
+    <text x="24" y="128" fill="#e6e6e6">npm publish releases a package to the public registry.</text>
+    <text x="24" y="152" fill="#e6e6e6">Preview it with --dry-run. Agents draft, humans send: prepare the</text>
+    <text x="24" y="176" fill="#e6e6e6">message or release, show it to the user, and let the user send it.</text>
+    <text x="24" y="216" fill="#7ee787">exit 2: the command did not run, Claude reports what was stopped</text>
+  </g>
+</svg>

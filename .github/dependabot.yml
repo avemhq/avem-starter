@@ -1,0 +1,8 @@
+version: 2
+updates:
+  # The workflows pin actions to a commit SHA. Pinning stops silent changes,
+  # but the pins age; Dependabot proposes the update as a pull request.
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"

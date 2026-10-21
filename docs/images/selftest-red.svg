@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="290" viewBox="0 0 900 290" role="img" aria-label="The selftest turns red after onFailure was removed from the guard-git registration">
+  <rect width="900" height="290" rx="10" fill="#1e2127"/>
+  <circle cx="22" cy="20" r="6" fill="#ff5f56"/>
+  <circle cx="42" cy="20" r="6" fill="#ffbd2e"/>
+  <circle cx="62" cy="20" r="6" fill="#27c93f"/>
+  <text x="450" y="24" fill="#8b929e" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="middle">One line removed from settings.json: "onFailure": "block" on guard-git</text>
+  <g font-family="Menlo, Consolas, monospace" font-size="15">
+    <text x="24" y="66" fill="#8b929e">$ bash .claude/hooks/selftest.sh</text>
+    <g fill="#8b929e">
+      <text x="24" y="100">Check</text><text x="214" y="100">Axis</text><text x="334" y="100">Result</text><text x="414" y="100">Detail</text>
+    </g>
+    <g fill="#e6e6e6">
+      <text x="24" y="124">guard-git</text><text x="214" y="124">registered</text><text x="334" y="124" fill="#ff6b6b">FAIL</text><text x="414" y="124">fail-open in settings.json</text>
+      <text x="24" y="148">guard-git</text><text x="214" y="148">speaks</text><text x="334" y="148" fill="#7ee787">ok</text><text x="414" y="148">18 of 18 violations blocked</text>
+      <text x="24" y="172">guard-git</text><text x="214" y="172">silent</text><text x="334" y="172" fill="#7ee787">ok</text><text x="414" y="172">9 of 9 harmless commands passed</text>
+    </g>
+    <text x="24" y="206" fill="#ff6b6b">FAIL guard-git registered: not the plain blocking call</text>
+    <text x="64" y="230" fill="#ff6b6b">... with args [] and "onFailure": "block" in settings.json (shortened)</text>
+    <text x="24" y="266" fill="#ff6b6b">Result: 1 of 114 checks failed.</text>
+  </g>
+</svg>

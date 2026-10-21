@@ -1,0 +1,11 @@
+An: buchhaltung@musterhof.example
+Betreff: Zahlungserinnerung Rechnung 2026-0412
+
+Guten Tag
+
+Unsere Rechnung 2026-0412 über CHF 1'850.00, fällig am 02.10.2026, ist bei uns noch offen. Vielleicht ist sie untergegangen. Wir danken Ihnen für die Begleichung in den nächsten Tagen.
+
+Falls Sie bereits bezahlt haben, betrachten Sie diese Nachricht bitte als gegenstandslos.
+
+Freundliche Grüsse
+Mara Keller, Buchhaltung

@@ -1,0 +1,7 @@
+# Secrets and personal overrides never go into the repository.
+.env
+.env.*
+!.env.example
+.claude/settings.local.json
+*.pem
+*.key
